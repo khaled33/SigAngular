@@ -1,0 +1,115 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-outline-primary">
+
+      <div class="card-body">
+        <form [formGroup]="FormGroup" (ngSubmit)="onClickSubmit()">
+          <div class="form-body">
+            <h3 class="card-title m-t-15">Informations du verger</h3>
+            <hr>
+            <div class="row p-t-20">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label">Superficies Verger</label>
+                  <input type="text"
+                         id="firstName"
+                         class="form-control"
+                         formControlName="superficies"
+                         [ngClass]="{ 'is-invalid': submitted && f.superficies.errors }"
+                  >
+                  <div *ngIf="submitted && f.superficies.errors" class="invalid-feedback">
+                    <div> Superficies est obligatoire</div>
+                  </div>
+
+                </div>
+              </div>
+              <!--/span-->
+              <div class="col-md-6">
+                <div class="form-group has-danger">
+                  <label class="control-label">Densites Verger</label>
+                  <input type="text"
+                         formControlName="densites"
+                         id="lastName"
+                         class="form-control"
+                         [ngClass]="{ 'is-invalid': submitted && f.densites.errors }"
+                  >
+                  <div *ngIf="submitted && f.densites.errors" class="invalid-feedback">
+                    <div>Densites est obligatoire</div>
+                  </div>
+                </div>
+                <!--/span-->
+              </div>
+              <!--/row-->
+
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>L'age Moyen du Verger</label>
+                    <input type="text" class="form-control" formControlName="ageMoyen"
+                           [ngClass]="{ 'is-invalid': submitted && f.ageMoyen.errors }"
+                    >
+                    <div *ngIf="submitted && f.ageMoyen.errors" class="invalid-feedback">
+                      <div>L'age Moyen du Verger est obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <!--/span-->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Rendements du Verger</label>
+                    <input type="text" formControlName="rendements"
+                           class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && f.rendements.errors }"
+                    >
+                    <div *ngIf="submitted && f.rendements.errors" class="invalid-feedback">
+                      <div>Rendements du Verger est obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <label>Localisation du Verger</label><BR>
+                <div  class="col-md-4">
+                  <div class="form-row ">
+                    <div class="col text-center">
+
+
+                      <input type="number" formControlName="x"
+                             class="form-control"
+                             placeholder="X"
+                             [ngClass]="{ 'is-invalid': submitted && f.x.errors }"
+                      >
+                      <div *ngIf="submitted && f.x.errors" class="invalid-feedback">
+                        <div>x du Verger est obligatoire</div>
+                      </div>
+                    </div>
+                    <div class="col text-center" >
+
+                      <input type="number" formControlName="y"
+                             class="form-control"
+                             placeholder="Y"
+
+                             [ngClass]="{ 'is-invalid': submitted && f.y.errors }"
+                      >
+                      <div *ngIf="submitted && f.y.errors" class="invalid-feedback">
+                        <div>y du Verger est obligatoire</div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+                <!--/span-->
+              </div>
+
+            </div>
+            <br>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-success btn-block m-b-10"><i class="fa fa-check"></i> Save</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

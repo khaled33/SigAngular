@@ -1,18 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// import {ListboxModule} from 'primeng/listbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {DialogModule} from 'primeng/dialog';
+import { LoginComponent } from './login/login.component';
+import {LoginModule} from './login/login.module';
+import {DashboardModule} from './dashboard/dashboard.module';
+import { LeftSidebarComponent } from './dashboard/left-sidebar/left-sidebar.component';
+import {ProprietairesService} from './_service/proprietaires.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {ListboxModule} from 'primeng/listbox';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent,
+
+
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    ListboxModule,
+    BrowserModule, DialogModule,
+    AppRoutingModule, FormsModule,ReactiveFormsModule,
+    BrowserAnimationsModule,  HttpClientModule,
+    LoginModule, DashboardModule
   ],
   providers: [],
+  exports: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
