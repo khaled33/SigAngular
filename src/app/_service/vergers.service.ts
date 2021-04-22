@@ -14,9 +14,18 @@ export class VergersService {
   };
   constructor(private httpClient: HttpClient) { }
   addVergers(Verger:Vergers){
-    return this.httpClient.post(`${environment.urlApi}/vergers`,JSON.stringify(Verger),this.httpOptions);
+    return this.httpClient.post(`${environment.urlApi}/Vergers`,JSON.stringify(Verger),this.httpOptions);
   }
-  getPageProprietaires(pageSize:number,pageNumber:number){
-    return this.httpClient.get(`${environment.urlApi}`+"/ProprietairesPage?pageSize="+pageSize+"&pageNumber="+pageNumber);
+  getPageVergers(pageSize:number,pageNumber:number){
+    return this.httpClient.get(`${environment.urlApi}`+"/VergersPage?pageSize="+pageSize+"&pageNumber="+pageNumber);
+  }
+
+  DeleteVergers(id :number){
+    return this.httpClient.delete(`${environment.urlApi}`+"/Vergers/"+id);
+  }
+
+  UpdateVergers(vergers: Vergers, id: number) {
+    return this.httpClient.put(`${environment.urlApi}/Vergers/`+id,JSON.stringify(vergers),this.httpOptions);
+
   }
 }

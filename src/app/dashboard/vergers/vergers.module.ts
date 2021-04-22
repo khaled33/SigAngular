@@ -8,6 +8,7 @@ import { ListComponent } from './list/list.component';
 import {FormsModule} from '@angular/forms';
 
 import {ReactiveFormsModule} from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import {ReactiveFormsModule} from '@angular/forms';
   imports: [
     CommonModule,
     VergersRoutingModule,
-    FormsModule,ReactiveFormsModule
+    FormsModule, ReactiveFormsModule, NgbModule
   ]
 })
 export class VergersModule { }

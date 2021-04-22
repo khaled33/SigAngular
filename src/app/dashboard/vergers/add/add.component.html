@@ -11,7 +11,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="control-label">Superficies Verger</label>
-                  <input type="text"
+                  <input type="number"
                          id="firstName"
                          class="form-control"
                          formControlName="superficies"
@@ -27,7 +27,7 @@
               <div class="col-md-6">
                 <div class="form-group has-danger">
                   <label class="control-label">Densites Verger</label>
-                  <input type="text"
+                  <input type="number"
                          formControlName="densites"
                          id="lastName"
                          class="form-control"
@@ -42,11 +42,11 @@
               <!--/row-->
 
 
-              <div class="row">
-                <div class="col-md-6">
+
+                <div class="col-md-6 ">
                   <div class="form-group">
                     <label>L'age Moyen du Verger</label>
-                    <input type="text" class="form-control" formControlName="ageMoyen"
+                    <input type="number" class="form-control" formControlName="ageMoyen"
                            [ngClass]="{ 'is-invalid': submitted && f.ageMoyen.errors }"
                     >
                     <div *ngIf="submitted && f.ageMoyen.errors" class="invalid-feedback">
@@ -58,7 +58,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Rendements du Verger</label>
-                    <input type="text" formControlName="rendements"
+                    <input type="number" formControlName="rendements"
                            class="form-control"
                            [ngClass]="{ 'is-invalid': submitted && f.rendements.errors }"
                     >
@@ -67,6 +67,7 @@
                     </div>
                   </div>
                 </div>
+
                 <label>Localisation du Verger</label><BR>
                 <div  class="col-md-4">
                   <div class="form-row ">
@@ -101,7 +102,7 @@
                 <!--/span-->
               </div>
 
-            </div>
+
             <br>
             <div class="form-actions">
               <button type="submit" class="btn btn-success btn-block m-b-10"><i class="fa fa-check"></i> Save</button>

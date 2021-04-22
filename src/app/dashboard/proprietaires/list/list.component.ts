@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, SimpleChanges} from '@angular/core';
 import {ProprietairesService} from '../../../_service/proprietaires.service';
 import {Proprietaires} from '../../../_model/proprietaires';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-list',
@@ -8,11 +9,14 @@ import {Proprietaires} from '../../../_model/proprietaires';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  page: number;
+  page: number=1;
+  pageevent: number;
   pageSize: number;
   items: number;
   PageResponse: any;
-  ProprietairesList:Array<Proprietaires>=[];
+  ProprietairesList: Array<Proprietaires> = [];
+  proprietaireUpdate: Proprietaires;
+
   constructor(private ProprietairesService: ProprietairesService) {
   }
 
@@ -26,17 +30,13 @@ export class ListComponent implements OnInit {
     this.ProprietairesService.getPageProprietaires(pageSize, pageNumber).subscribe(data => {
       this.PageResponse = data;
 
-        this.pageSize=this.PageResponse.pageable.pageSize;
-      // this.page=this.PageResponse.pageable.pageNumber ;
+      this.pageSize = this.PageResponse.pageable.pageSize;
+         this.pageevent=this.PageResponse.pageable.pageNumber ;
       //
-        this.items=this.PageResponse.totalElements;
-//
-// console.log(this.page);
-// console.log(this.pageSize);
-// console.log(this.items);
+      this.items = this.PageResponse.totalElements;
 
-this.ProprietairesList=this.PageResponse.content;
-console.log(this.ProprietairesList);
+      this.ProprietairesList = this.PageResponse.content;
+      console.log(this.ProprietairesList);
     });
   }
 
@@ -46,4 +46,42 @@ console.log(this.ProprietairesList);
 
 
   }
+
+  confirmBox(id: number) {
+    Swal.fire({
+      title: 'Voulez-vous vraiment supprimer?',
+      text: '',
+      icon: 'error',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, supprimez-le!',
+      cancelButtonText: 'Non, garde-le'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Supprimé!',
+          'le propriétaire a été supprimé.',
+          'success'
+        );
+        this.ProprietairesService.DeleteProprietaires(id).subscribe(value => {
+
+        }, error1 => {
+        }, () => {
+          this.getProprietaires(this.pageevent,9);
+        });
+
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Annulé',
+          'le propriétaire n\'est pas supprimé :)',
+          'error'
+        );
+      }
+    });
+  }
+
+  update(Proprietaire: Proprietaires) {
+    this.proprietaireUpdate = Proprietaire;
+  }
+
+
 }

@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
-import {Image as ImageLayer, Tile as TileLayer} from 'ol/layer';
+import {Image as ImageLayer, Tile as TileLayer, VectorImage} from 'ol/layer';
 import ImageWMS from 'ol/source/ImageWMS';
 import {HttpClient} from '@angular/common/http';
  import {Circle as CircleStyle, Fill, Stroke, Style} from 'ol/style';
+import GeoJSON from 'ol/format/GeoJSON';
+import Vector from 'ol/source/Vector';
+import Icon from 'ol/style/Icon';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -101,4 +106,12 @@ return this.imageLayer;
     return this.http.get(url);
 
   }
+
+
+  getPointVergerById(id:number ){
+
+    return this.http.get('http://localhost:8082/geoserver/OCB/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=OCB%3AGetPoitByIdVergers&maxFeatures=50&outputFormat=application%2Fjson&viewparams=id:'+id
+  );
+  }
+
 }

@@ -1,0 +1,16 @@
+#hotel_map {
+  height: 780px;
+  width: 100%;
+}
+
+.modal-dialog{
+  width: 80%;
+  margin: auto;
+}
+.modal.modal-wide .modal-dialog {
+  width: 90%;
+}
+
+.modal-wide .modal-body {
+  overflow-y: auto;
+}

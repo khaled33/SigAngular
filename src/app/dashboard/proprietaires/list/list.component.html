@@ -17,6 +17,9 @@
               <th>Genre</th>
               <th>Date De Naissance</th>
               <th>Regions</th>
+              <th>Carte CIN </th>
+              <th>Ville</th>
+              <th>Code Postal</th>
               <th style="text-align: center">Action</th>
             </tr>
             </thead>
@@ -24,18 +27,25 @@
             <tr *ngFor="let Proprietaire of ProprietairesList">
 
               <th scope="row">{{Proprietaire.id}}</th>
-              <td>{{Proprietaire.non  }} {{Proprietaire.prenom  }}</td>
-              <td><span class="badge badge-primary">{{Proprietaire.genre  }}</span></td>
+              <td>{{Proprietaire.nom  }} {{Proprietaire.prenom  }}</td>
+              <td><span
+                [ngClass]="Proprietaire.genre == 'Femme' ? 'badge badge-danger' : 'badge badge-primary'">{{Proprietaire.genre  }}</span>
+              </td>
 
               <td>{{Proprietaire.dateDeNaissance | date}}</td>
               <td>{{Proprietaire.regions}}</td>
+              <td>{{Proprietaire.cin}}</td>
+              <td>{{Proprietaire.ville}}</td>
+              <td>{{Proprietaire.codePostal}}</td>
 
               <td style="text-align: center">
                 <span>
-                  <button style=" margin-right: 17px;" class="btn btn btn-outline-info">
+                  <button style=" margin-right: 17px;" class="btn btn btn-outline-info" data-toggle="modal"
+                          data-target="#exampleModalCenter" (click)="update(Proprietaire)">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                   </button>
-                  <button class="btn btn btn-outline-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                  <button class="btn btn btn-outline-danger" (click)="confirmBox(Proprietaire.id)"><i
+                    class="fa fa-trash-o" aria-hidden="true"></i></button>
 
                 </span>
 
@@ -51,10 +61,12 @@
     </div>
   </div>
 
-</div>
+</div>  <app-update [item]="proprietaireUpdate"></app-update>
+
 <!-- /# row -->
 <ngb-pagination
   (pageChange)="pageChange($event-1)"
   [(page)]="page"
   [pageSize]="pageSize"
   [collectionSize]="items"></ngb-pagination>
+

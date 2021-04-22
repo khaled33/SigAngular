@@ -1,6 +1,6 @@
 export class Proprietaires {
   id:number;
-  non: string;
+  nom?: string;
   prenom: string;
   genre: string;
   dateDeNaissance: Date;

@@ -17,4 +17,12 @@ export class ProprietairesService {
   getPageProprietaires(pageSize:number,pageNumber:number){
      return this.httpClient.get(`${environment.urlApi}`+"/ProprietairesPage?pageSize="+pageSize+"&pageNumber="+pageNumber);
   }
+    DeleteProprietaires(id :number){
+     return this.httpClient.delete(`${environment.urlApi}`+"/Proprietaires/"+id);
+  }
+
+  Updateproprietaires(p: Proprietaires, id: number) {
+    return this.httpClient.put(`${environment.urlApi}/Proprietaires/`+id,JSON.stringify(p),this.httpOptions);
+
+  }
 }

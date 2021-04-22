@@ -8,10 +8,11 @@ import { ProprietairesComponent } from './proprietaires.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ProprietairesService} from '../../_service/proprietaires.service';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+import { UpdateComponent } from './update/update.component';
 
 
 @NgModule({
-  declarations: [ListComponent,AddComponent, ProprietairesComponent],
+  declarations: [ListComponent,AddComponent, ProprietairesComponent, UpdateComponent],
   imports: [
     CommonModule,
     ProprietairesRoutingModule,
