@@ -1,0 +1,179 @@
+
+
+<!-- Modal -->
+<div class="modal fade"  #basicModal   id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" style="
+    padding: 2%;
+">
+
+      <div class="modal-body">
+        <form  [formGroup]="FormGroup" (ngSubmit)="onClickSubmit()">
+          <div class="form-body">
+            <h3 class="card-title m-t-15">Informations du  Proprietaires</h3>
+            <hr>
+            <div class="row p-t-20">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label">Nom</label>
+                  <input type="text"
+                         id="firstName"
+                         class="form-control"
+                         formControlName="nom"
+                         [ngClass]="{ 'is-invalid': submitted && f.nom.errors }"
+                  >
+                  <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                    <div >Le nom est obligatoire</div>
+                  </div>
+
+                </div>
+              </div>
+              <!--/span-->
+              <div class="col-md-6">
+                <div class="form-group has-danger">
+                  <label class="control-label">Prénom</label>
+                  <input type="text"
+                         formControlName="prenom"
+                         id="lastName"
+                         class="form-control"
+                         [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }"
+                  >
+                  <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                    <div >Le prénom est obligatoire</div>
+                  </div>
+                </div>
+                <!--/span-->
+              </div>
+              <!--/row-->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group ">
+                    <label class="control-label">Genre</label>
+                    <select  formControlName="genre"
+                             class="form-control "
+                             [ngClass]="{ 'is-invalid': submitted && f.genre.errors }"
+                    >
+
+                      <option value="Homme">Homme</option>
+                      <option value="Femme">Femme</option>
+                    </select>
+                    <small class="form-control-feedback"> Sélectionnez votre sexe </small>
+                    <div *ngIf="submitted && f.genre.errors" class="invalid-feedback">
+                      <div >Le Genre est obligatoire</div>
+                    </div>
+                  </div></div>
+
+
+                <!--/span-->
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Date De Naissance</label>
+                    <input type="date"
+                           formControlName="dateDeNaissance"
+                           class="form-control"
+                           placeholder="dd/mm/yyyy"
+                           [ngClass]="{ 'is-invalid': submitted && f.dateDeNaissance.errors }"
+                    >
+                    <div *ngIf="submitted && f.dateDeNaissance.errors" class="invalid-feedback">
+                      <div >Le date De naissance est obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <!--/span-->
+
+                <!--/span-->
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Numéro de carte d'identité nationale</label>
+                    <input type="number"
+                           formControlName="cin"
+                           class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && f.cin.errors }"
+                    >
+                    <div *ngIf="submitted && f.cin.errors" class="invalid-feedback">
+                      <div >Le date De naissance est obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <!--/span-->
+              </div>
+              <!--/row-->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Regions</label>
+                    <select class="form-control"
+                            formControlName="regions"
+                            data-placeholder="Choose a Category"
+                            tabindex="1"
+                            [ngClass]="{ 'is-invalid': submitted && f.regions.errors }">
+                      <option value="Boucle du Mouhoun">Boucle du Mouhoun</option>
+                      <option value="Cascades">Cascades</option>
+                      <option value="Centre">Centre</option>
+                      <option value="Centre-Est">Centre-Est</option>
+                      <option value="Centre-Nord">Centre-Nord</option>
+                      <option value="Centre-Ouest">Centre-Ouest</option>
+                      <option value="Centre-Sud">Centre-Sud</option>
+                      <option value="Est">Est</option>
+                      <option value="Hauts-Bassins">Hauts-Bassins</option>
+                      <option value="Nord">Nord</option>
+                      <option value="Plateau-Central">Plateau-Central</option>
+                      <option value="Sahel">Sahel</option>
+                      <option value="Sud-Ouest">Sud-Ouest</option>
+                    </select>
+                    <div *ngIf="submitted && f.dateDeNaissance.errors" class="invalid-feedback">
+                      <div >La Regions est obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+              <!--/row-->
+
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Ville</label>
+                    <input type="text" class="form-control" formControlName="ville"
+                           [ngClass]="{ 'is-invalid': submitted && f.ville.errors }"
+                    >
+                    <div *ngIf="submitted && f.ville.errors" class="invalid-feedback">
+                      <div >La Ville est obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <!--/span-->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Code Postal</label>
+                    <input type="text" formControlName="codePostal"
+                           class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && f.codePostal.errors }"
+                    >
+                    <div *ngIf="submitted && f.ville.errors" class="invalid-feedback">
+                      <div >Le Code Postal est obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <!--/span-->
+              </div>
+
+            </div>
+            <br>
+
+          </div>
+          <div class="modal-footer">
+          <div class="form-actions">
+            <button type="submit" class="btn btn-success btn-block m-b-10" > <i class="fa fa-check"></i> Save</button>
+          </div>
+          </div>
+         </form>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
