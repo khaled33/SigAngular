@@ -4,14 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm cache clean --force && ng build  --prod  --build-optimizer=false",
+    "build": "ng build  --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "~8.3.25",
     "@angular/animations": "~8.2.14",
     "@angular/cdk": "^8.1.1",
     "@angular/common": "~8.2.14",
