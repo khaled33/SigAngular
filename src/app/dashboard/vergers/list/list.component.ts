@@ -16,6 +16,8 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ServiceGeoserverService} from '../../../_service/service-geoserver.service';
 import Vector from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
+import BingMaps from 'ol/source/BingMaps';
+import XYZ from 'ol/source/XYZ';
 
 @Component({
   selector: 'app-list',
@@ -45,19 +47,20 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.getVergers(0, 9);
-
+    var attributions =
+      '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> ' +
+      '<a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>';
     this.map = new Map({
       target: 'hotel_map',
       layers: [
         new TileLayer({
-          source: new OSM()
+          source: new XYZ({
+            attributions: attributions,
+            url: 'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=get_your_own_D6rA4zTHduk6KOKTXzGB'  ,
+            maxZoom: 20,
+          }),
         })
-
-
-
-
       ],
-
       vectorLayer: this.vectorLayer,
       view: this.view,
     });
@@ -121,7 +124,7 @@ export class ListComponent implements OnInit {
   }
 
   update(Verger: Vergers) {
-
+this.VergersUpdate=Verger
   }
   vectorSource:VectorImage;
   Localisation(id: number) {

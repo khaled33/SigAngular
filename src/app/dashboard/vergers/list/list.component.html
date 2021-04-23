@@ -33,16 +33,16 @@
               <td>{{Verger.densites}}</td>
               <td>{{Verger.rendements}}</td>
               <td style="text-align: center">
-                <button class="btn btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalCenter"
-                        (click)="Localisation(Verger.id)"><i
-                  class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <button class="btn btn btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter"
+                        (click)="Localisation(Verger.id)"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                </button>
               </td>
 
 
               <td style="text-align: center">
                 <span>
-                  <button style=" margin-right: 17px;" class="btn btn btn-outline-info" data-toggle="modal1"
-                          data-target="#exampleModalCenter" (click)="update(Verger)">
+                  <button style=" margin-right: 17px;" class="btn btn btn-outline-info"  data-toggle="modal" data-target="#exampleModal"
+                           (click)="update(Verger)">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                   </button>
                   <button class="btn btn btn-outline-danger" (click)="confirmBox(Verger.id)"><i
@@ -91,3 +91,7 @@
     </div>
   </div>
 </div>
+
+<app-update [item]="VergersUpdate"></app-update>
+<!-- Modal -->
+

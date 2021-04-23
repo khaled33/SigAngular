@@ -9,10 +9,11 @@ import {FormsModule} from '@angular/forms';
 
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { UpdateComponent } from './update/update.component';
 
 
 @NgModule({
-  declarations: [VergersComponent, AddComponent, ListComponent],
+  declarations: [VergersComponent, AddComponent, ListComponent, UpdateComponent],
   imports: [
     CommonModule,
     VergersRoutingModule,
