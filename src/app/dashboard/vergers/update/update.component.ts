@@ -14,10 +14,10 @@ import {ServiceGeoserverService} from '../../../_service/service-geoserver.servi
 })
 export class UpdateComponent implements OnInit, OnChanges {
 
-  private FormGroup: FormGroup;
-  private submitted = false;
-  private vergers: Vergers = new Vergers();
-  private id: number = 0;
+   FormGroup: FormGroup;
+   submitted = false;
+   vergers: Vergers = new Vergers();
+   id: number = 0;
 
   constructor(private fb: FormBuilder, private ServiceGeoserverService: ServiceGeoserverService, private VergersService: VergersService, private Route: Router, private ListComponent: ListComponent) {
   }

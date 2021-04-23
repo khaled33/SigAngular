@@ -11,9 +11,9 @@ import {Vergers} from '../../../_model/vergers';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
-  private FormGroup :FormGroup;
-  private submitted = false;
-  private vergers:Vergers=new Vergers();
+   FormGroup :FormGroup;
+   submitted = false;
+   vergers:Vergers=new Vergers();
   constructor(private fb: FormBuilder,private VergersService:VergersService,private Route:Router) { }
 
   ngOnInit() {
