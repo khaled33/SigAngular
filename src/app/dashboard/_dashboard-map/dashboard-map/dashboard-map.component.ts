@@ -16,6 +16,9 @@ import {altKeyOnly, click, pointerMove} from 'ol/events/condition';
 import GeoJSON from 'ol/format/GeoJSON';
 import {ServiceGeoserverService} from '../../../_service/service-geoserver.service';
 import {ListboxModule} from 'primeng/listbox';
+import {DragBox} from 'ol/interaction';
+import {platformModifierKeyOnly} from 'ol/events/condition';
+import {transformExtent} from 'ol/proj';
 
 @Component({
   selector: 'app-dashboard-map',
@@ -34,7 +37,7 @@ export class DashboardMapComponent implements OnInit {
   type: string[] = [];
   selectedCities: any[];
   vectorLayer: any;
-
+  vectorSource:VectorImage;
   constructor(private ServiceGeoserverService: ServiceGeoserverService) {
     this.cities = [
       {name: 'Boucle du Mouhoun', code: 'PRS'},
@@ -54,7 +57,7 @@ export class DashboardMapComponent implements OnInit {
 
   }
 
-  map: Map;
+  map: Map=new Map;
 
   ngOnInit(): void {
     var displaye: boolean = false;
@@ -118,6 +121,8 @@ export class DashboardMapComponent implements OnInit {
 
       });
     });
+    this.SelectPoint()
+
   }
 
   title = 'openlayar';
@@ -152,9 +157,8 @@ export class DashboardMapComponent implements OnInit {
       });
 
 
-      this.ServiceGeoserverService.getVergerAllGeoJson().subscribe(value => {
 
-        var vectorSource = new VectorImage({
+        this.vectorSource = new VectorImage({
           source: new Vector({
             // url: 'http://localhost:8082/geoserver/demo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=demo%3AvergerGeojson&maxFeatures=50&outputFormat=application%2Fjson',
             url: 'http://localhost:8082/geoserver/OCB/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=OCB%3AGetAllVergers&maxFeatures=50&outputFormat=application%2Fjson',
@@ -163,7 +167,7 @@ export class DashboardMapComponent implements OnInit {
           })
         });
 
-        vectorSource.setStyle(new Style({
+      this.vectorSource.setStyle(new Style({
           image: new Icon(({
              crossOrigin: 'anonymous',
             src: '../assets/images/marker.png',
@@ -173,21 +177,50 @@ export class DashboardMapComponent implements OnInit {
           }))
         }));
 
-        this.map.addLayer(vectorSource);
-        console.log(vectorSource);
-
-      });
-
-      // this.map.addvectorLay()
+        this.map.addLayer(this.vectorSource);
+        console.log(this.vectorSource);
 
 
-    }
+      }
+
 
     // this.map.removeLayer(this.parm);
     // this.parm=this.ServiceGeoserverService.getStrit($event.value.name);
     // this.map.addLayer(this.parm);
 
   }
+
+  SelectPoint(){
+
+    var select = new Select();
+    this.map.addInteraction(select);
+
+    var selectedFeatures = select.getFeatures();
+
+// a DragBox interaction used to select features by drawing boxes
+    var dragBox = new DragBox({
+      condition: platformModifierKeyOnly
+    });
+
+    this.map.addInteraction(dragBox);
+
+
+
+    dragBox.on('boxend', function(e) {
+
+      var extent = dragBox.getGeometry().getExtent();
+      var extent1 = transformExtent(
+        extent,
+        'EPSG:3857', 'EPSG:4326'
+      );
+      console.log(extent1);
+      // console.log(extent);
+
+    });
+
+
+  }
+
 
   flyTo(location, done) {
     var duration = 2000;
@@ -227,3 +260,5 @@ export class DashboardMapComponent implements OnInit {
     );
   }
   }
+
+
