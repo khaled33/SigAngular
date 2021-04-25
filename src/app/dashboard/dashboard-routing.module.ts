@@ -19,6 +19,8 @@ const routes: Routes = [
          path:'Map', loadChildren: () => import('./_dashboard-map/dashboard-map/dashboard-map.module').then(m => m.DashboardMapModule),canActivate: []
        },
 
+       { path: 'Analytics',   loadChildren: () => import('./_dashboard-map/dashboard-analytics/dashboard-analytics.module').then(m => m.DashboardAnalyticsModule),canActivate: [] },
+       // redirect to `
        { path: '',   redirectTo: '/dashboard', pathMatch: 'full' }, // redirect to `
      ]
 
