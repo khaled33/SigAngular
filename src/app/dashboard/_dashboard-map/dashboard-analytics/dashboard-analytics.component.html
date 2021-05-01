@@ -6,7 +6,7 @@
           <span><i class="fa fa-user f-s-40 color-primary"></i></span>
         </div>
         <div class="media-body media-text-right">
-          <h2>568120</h2>
+          <h2>{{modalDashboardHeadStatistic?.countProprietaires}}</h2>
           <p class="m-b-0">Nombre Total Des Propriétaires</p>
         </div>
       </div>
@@ -19,7 +19,7 @@
           <span><i class="fa fa-map f-s-40 color-success"></i></span>
         </div>
         <div class="media-body media-text-right">
-          <h2>1178</h2>
+          <h2>{{modalDashboardHeadStatistic?.countVergers}}</h2>
           <p class="m-b-0">Nombre Total Des Vergers</p>
         </div>
       </div>
@@ -32,7 +32,7 @@
           <span><i class="fa fa-globe f-s-40 color-warning"></i></span>
         </div>
         <div class="media-body media-text-right">
-          <h2>25</h2>
+          <h2>{{modalDashboardHeadStatistic?.surfaceTotal}}</h2>
           <p class="m-b-0">Surface Total Des Vergers</p>
         </div>
       </div>
@@ -45,8 +45,8 @@
           <span><i class="fa  fa-area-chart f-s-40 color-danger"></i></span>
         </div>
         <div class="media-body media-text-right">
-          <h2>847</h2>
-          <p class="m-b-0">Rendements Moyenne</p>
+          <h2>{{modalDashboardHeadStatistic?.totalProduction}}</h2>
+          <p class="m-b-0">Rendements Total</p>
         </div>
       </div>
     </div>
@@ -54,6 +54,102 @@
 </div>
 
 
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-title">
+        <h4>Sales</h4>
+      </div>
+
+      <ngx-charts-bar-vertical-2d
+         [scheme]="colorScheme"
+        [results]="single"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [barPadding]= "50"
+         [view]="view"
+        [legendPosition]="'below'"
+        (select)="onSelect($event)">
+      </ngx-charts-bar-vertical-2d>
+    </div>
+    <!-- /# card -->
+  </div>
+
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-title">
+        <h4>Sales</h4>
+      </div>
+
+      <ngx-charts-pie-grid
+        [scheme]="colorScheme"
+        [results]="modalpieChart"
+
+         [view]="viewpie"
+          (select)="onSelect($event)">
+      </ngx-charts-pie-grid>
+    </div>
+    <!-- /# card -->
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-title">
+        <h4>pir chart</h4>
+      </div>
+
+      <ngx-charts-line-chart
+        [scheme]="colorScheme"
+        [results]="dataLignechar"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+         [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [view]="viewLighne"
+        [legendPosition]="'below'"
+        (select)="onSelect($event)">
+      </ngx-charts-line-chart>
+    </div>
+  </div>
+  <!-- /# column -->
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-title">
+        <h4>Visitor in Device</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover ">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>La Année du Productions</th>
+              <th>Toutal du Production </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let Production of ModaleProductionList">
+              <th scope="row">{{Production.id}}</th>
+              <td style="text-align: center">{{Production.anneeProduction  }} </td>
+              <td style="text-align: center">{{Production.productionValue }}</td>
+            </tr>
 
 
-
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

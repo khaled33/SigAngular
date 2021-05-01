@@ -43,7 +43,7 @@
 
 
 
-                <div class="col-md-6 ">
+                <div class="col-md-4 ">
                   <div class="form-group">
                     <label>L'age Moyen du Verger</label>
                     <input type="number" class="form-control" formControlName="ageMoyen"
@@ -55,7 +55,7 @@
                   </div>
                 </div>
                 <!--/span-->
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <div class="form-group">
                     <label>Rendements du Verger</label>
                     <input type="number" formControlName="rendements"
@@ -64,6 +64,18 @@
                     >
                     <div *ngIf="submitted && f.rendements.errors" class="invalid-feedback">
                       <div>Rendements du Verger est obligatoire</div>
+                    </div>
+                  </div>
+                </div>        <!--/span-->
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Annee du production Verger</label>
+                    <input type="date" formControlName="annee"
+                           #pRef  class="form-control date-own"
+                           [ngClass]="{ 'is-invalid': submitted && f.annee.errors }"
+                    >
+                    <div *ngIf="submitted && f.annee.errors" class="invalid-feedback">
+                      <div>Annee du production Verger est obligatoire</div>
                     </div>
                   </div>
                 </div>

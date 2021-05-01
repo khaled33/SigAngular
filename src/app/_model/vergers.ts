@@ -5,4 +5,5 @@ export class Vergers {
   ageMoyen: number;
   rendements: number;
   geomString:String="";
+  annee:String="";
 }

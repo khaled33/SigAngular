@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild,AfterViewInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ProprietairesService} from '../../../_service/proprietaires.service';
 import {Router} from '@angular/router';
@@ -10,10 +10,12 @@ import {Vergers} from '../../../_model/vergers';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.css']
 })
-export class AddComponent implements OnInit {
+export class AddComponent implements OnInit,AfterViewInit {
    FormGroup :FormGroup;
    submitted = false;
    vergers:Vergers=new Vergers();
+  @ViewChild('pRef', {static: false}) pRef: ElementRef;
+
   constructor(private fb: FormBuilder,private VergersService:VergersService,private Route:Router) { }
 
   ngOnInit() {
@@ -22,6 +24,7 @@ export class AddComponent implements OnInit {
       densites: ['',Validators.required ],
       ageMoyen: ['', Validators.required],
       rendements: ['',Validators.required ],
+      annee: ['',Validators.required ],
       x: ['',Validators.required ],
       y: ['',Validators.required ],
 
@@ -47,6 +50,10 @@ export class AddComponent implements OnInit {
     })
 
 
+
+  }
+
+  ngAfterViewInit(): void {
 
   }
 }

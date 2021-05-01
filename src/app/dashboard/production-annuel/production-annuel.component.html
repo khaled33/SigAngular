@@ -1,0 +1,186 @@
+<div class="row">
+
+  <!-- /# column -->
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-title">
+        <h4>Productions Annuel </h4>
+
+        <Button class="btn btn btn-success  btn-sm float-right" data-toggle="modal" data-target="#exampleModalCenter">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          Ajouter une Productions
+        </Button>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>La Année du Productions</th>
+              <th>Toutal du Production des Vergers</th>
+
+
+              <th style="text-align: center">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let Production of ModaleProductionList">
+
+              <th scope="row">{{Production.id}}</th>
+              <td>{{Production.anneeProduction  }} </td>
+
+
+              <td>{{Production.productionValue }}</td>
+
+
+              <td style="text-align: center">
+                <span>
+                  <button style=" margin-right: 17px;" class="btn btn btn-outline-info" data-toggle="modal"
+                          data-target="#exampleModal"
+                          (click)="updateProduction(Production)">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </button>
+                  <button class="btn btn btn-outline-danger" (click)="confirmBox(Production.id)"><i
+                    class="fa fa-trash-o" aria-hidden="true"></i></button>
+
+                </span>
+
+              </td>
+
+
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- Modal add -->
+<div class="modal fade" id="exampleModalCenter" #basicModal tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Ajouter une Productions
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="FormGroup" (ngSubmit)="onClickSubmit()">
+
+      <div class="modal-body">
+
+
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="Annee" class="control-label">Annee du Production</label>
+              <input type="date"
+                     id="Annee"
+                     class="form-control"
+                     formControlName="anneeProduction"
+                     [ngClass]="{ 'is-invalid': submitted && f.anneeProduction.errors }"
+              >
+              <div *ngIf="submitted && f.anneeProduction.errors" class="invalid-feedback">
+                <div> Annee du Production est obligatoire</div>
+              </div>
+
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-12">
+            <div class="form-group has-danger">
+              <label for="ProductionValue" class="control-label">La Valeur du Production </label>
+              <input type="number"
+                     formControlName="productionValue"
+                     id="productionValue"
+                     class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.productionValue.errors }"
+              >
+              <div *ngIf="submitted && f.productionValue.errors" class="invalid-feedback">
+                <div>La Production est obligatoire</div>
+              </div>
+            </div>
+            <!--/span-->
+          </div>
+          <!--/row-->
+
+      </div>
+
+
+      <div class="modal-footer">
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>-->
+        <button type="submit" class="btn btn-primary" >Ajouter</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Modal update -->
+<div class="modal fade" id="exampleModal" #basicModal2 tabindex="-1" role="dialog" aria-labelledby="exampleModal"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalS">Modifer une Productions
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="FormGroupUpdate" (ngSubmit)="update()">
+
+      <div class="modal-body">
+        <input type="number"
+               class="form-control"
+               formControlName="id"
+                [hidden]=true
+        >
+
+          <div class="col-md-12">
+            <div class="form-group">
+              <label  class="control-label">Annee du Production</label>
+              <input type="date"
+                      class="form-control"
+                     formControlName="anneeProduction"
+                     [ngClass]="{ 'is-invalid': submittedUpdate && f.anneeProduction.errors }"
+              >
+              <div *ngIf="submittedUpdate && f.anneeProduction.errors" class="invalid-feedback">
+                <div> Annee du Production est obligatoire</div>
+              </div>
+
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-12">
+            <div class="form-group has-danger">
+              <label  class="control-label">La Valeur du Production </label>
+              <input type="number"
+                     formControlName="productionValue"
+
+                     class="form-control"
+                     [ngClass]="{ 'is-invalid': submittedUpdate && f.productionValue.errors }"
+              >
+              <div *ngIf="submittedUpdate && f.productionValue.errors" class="invalid-feedback">
+                <div>La Production est obligatoire</div>
+              </div>
+            </div>
+            <!--/span-->
+          </div>
+          <!--/row-->
+
+      </div>
+
+
+      <div class="modal-footer">
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>-->
+        <button type="submit" class="btn btn-primary" >Ajouter</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
