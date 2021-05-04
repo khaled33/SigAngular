@@ -56,7 +56,7 @@ export class ListComponent implements OnInit {
         new TileLayer({
           source: new XYZ({
             attributions: attributions,
-            url: 'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=get_your_own_D6rA4zTHduk6KOKTXzGB'  ,
+            url: 'https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=get_your_own_D6rA4zTHduk6KOKTXzGB'  ,
             maxZoom: 20,
           }),
         })

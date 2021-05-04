@@ -1,6 +1,6 @@
 export class AnneeProduction {
   id:number;
-  anneeProduction: number;
+  anneeProduction: String;
   productionValue: number;
 
 }

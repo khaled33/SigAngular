@@ -44,6 +44,24 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit {
   public dataLignechar = [];
 
   constructor(private dashboardHeadService: DashboardHeadService, private ProductionsAnnuelService: ProductionsAnnuelService, private PieChartService: PieChartService) {
+
+    if (innerWidth >= 500 && innerWidth <= 980) {
+      this.view = [innerWidth / 1.27, 400];
+      this.viewpie = [innerWidth / 1.27, 460];
+      this.viewLighne = [innerWidth / 1.30, 460];
+
+
+    }else if(innerWidth >= 1166 && innerWidth <= 1650) {
+      this.view = [innerWidth /3, 400];
+      this.viewpie = [innerWidth / 3, 460];
+      this.viewLighne = [innerWidth / 2.1, 290];
+    }else {
+      this.view = [innerWidth /2.6, 400];
+      this.viewpie = [innerWidth / 2.6, 460];
+      this.viewLighne = [innerWidth /1.90, 290];
+
+    }
+
   }
 
   ngOnInit() {
@@ -105,4 +123,26 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit {
     })
   }
 
+  onResize($event) {
+    if (innerWidth >= 500 && innerWidth <= 980) {
+      this.view = [innerWidth / 1.27, 400];
+      this.viewpie = [innerWidth / 1.27, 460];
+      this.viewLighne = [innerWidth / 1.30, 460];
+
+
+    }else if(innerWidth >= 1166 && innerWidth <= 1650) {
+      this.view = [$event.target.innerWidth /3, 400];
+      this.viewpie = [innerWidth / 3, 460];
+      this.viewLighne = [$event.target.innerWidth / 2.1, 290];
+    }else {
+      this.view = [$event.target.innerWidth /2.6, 400];
+      this.viewpie = [innerWidth / 2.6, 460];
+      this.viewLighne = [$event.target.innerWidth /1.90, 290];
+
+    }
+
+
+
+
+  }
 }

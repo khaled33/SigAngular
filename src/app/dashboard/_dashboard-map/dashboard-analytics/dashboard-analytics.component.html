@@ -62,6 +62,7 @@
       </div>
 
       <ngx-charts-bar-vertical-2d
+        (window:resize)="onResize($event)"
          [scheme]="colorScheme"
         [results]="single"
         [gradient]="gradient"
@@ -88,6 +89,8 @@
       </div>
 
       <ngx-charts-pie-grid
+        (window:resize)="onResize($event)"
+
         [scheme]="colorScheme"
         [results]="modalpieChart"
 
@@ -107,6 +110,8 @@
       </div>
 
       <ngx-charts-line-chart
+        (window:resize)="onResize($event)"
+
         [scheme]="colorScheme"
         [results]="dataLignechar"
         [gradient]="gradient"

@@ -1,11 +1,9 @@
 <div class="row">
-
   <!-- /# column -->
   <div class="col-lg-8">
     <div class="card">
       <div class="card-title">
         <h4>Productions Annuel </h4>
-
         <Button class="btn btn btn-success  btn-sm float-right" data-toggle="modal" data-target="#exampleModalCenter">
           <i class="fa fa-plus" aria-hidden="true"></i>
           Ajouter une Productions
@@ -19,48 +17,80 @@
               <th>#</th>
               <th>La Année du Productions</th>
               <th>Toutal du Production des Vergers</th>
-
-
               <th style="text-align: center">Action</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let Production of ModaleProductionList">
-
               <th scope="row">{{Production.id}}</th>
               <td>{{Production.anneeProduction  }} </td>
-
-
               <td>{{Production.productionValue }}</td>
-
-
               <td style="text-align: center">
                 <span>
                   <button style=" margin-right: 17px;" class="btn btn btn-outline-info" data-toggle="modal"
                           data-target="#exampleModal"
                           (click)="updateProduction(Production)">
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                     <i class="fa fa-pencil" aria-hidden="true"></i>
                   </button>
                   <button class="btn btn btn-outline-danger" (click)="confirmBox(Production.id)"><i
                     class="fa fa-trash-o" aria-hidden="true"></i></button>
-
                 </span>
-
               </td>
-
-
             </tr>
-
             </tbody>
           </table>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-title">
+          <ngx-charts-line-chart
+            [scheme]="colorScheme"
+            [results]="data"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [view]="view1"
+            [legendPosition]="'below'"
+             >
+          </ngx-charts-line-chart>
         </div>
       </div>
     </div>
   </div>
+     <!-- /# column -->
 
+   <div class="col-lg-4">
+    <div class="card">
+      <div class="card-title">
+        <h4>Productions Annuel </h4>
+        <div class="card-body">
+          <ngx-charts-pie-chart
+            [scheme]="colorScheme"
+            [results]="modalpieChart"
+            [legend]="showLegend"
+            [labels]="true"
+            [doughnut]="true"
+            [view]="view"
+            [legendPosition]="'Below'"
+          >
+          </ngx-charts-pie-chart>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 <!-- Modal add -->
-<div class="modal fade" id="exampleModalCenter" #basicModal tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="exampleModalCenter" #basicModal tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalCenterTitle"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -73,18 +103,25 @@
       </div>
       <form [formGroup]="FormGroup" (ngSubmit)="onClickSubmit()">
 
-      <div class="modal-body">
+        <div class="modal-body">
 
 
           <div class="col-md-12">
-            <div class="form-group">
+            <div class="form-group has-danger">
               <label for="Annee" class="control-label">Annee du Production</label>
-              <input type="date"
-                     id="Annee"
-                     class="form-control"
-                     formControlName="anneeProduction"
-                     [ngClass]="{ 'is-invalid': submitted && f.anneeProduction.errors }"
+              <!--              <input type="date"-->
+              <!--                     id="Annee"-->
+              <!--                     class="form-control"-->
+              <!--                     formControlName="anneeProduction"-->
+              <!--                     [ngClass]="{ 'is-invalid': submitted && f.anneeProduction.errors }"-->
+              <!--              >-->
+              <select id="Annee" class="form-control " formControlName="anneeProduction"
+                      [ngClass]="{ 'is-invalid': submitted && f.anneeProduction.errors }"
               >
+                <!--                <option value="null">&#45;&#45;Please choose an option&#45;&#45;</option>-->
+                <option *ngFor="let annee of ListAnne" value="{{annee}}">{{annee}}</option>
+
+              </select>
               <div *ngIf="submitted && f.anneeProduction.errors" class="invalid-feedback">
                 <div> Annee du Production est obligatoire</div>
               </div>
@@ -109,19 +146,20 @@
           </div>
           <!--/row-->
 
-      </div>
+        </div>
 
 
-      <div class="modal-footer">
-<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>-->
-        <button type="submit" class="btn btn-primary" >Ajouter</button>
-      </div>
+        <div class="modal-footer">
+          <!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>-->
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </div>
       </form>
     </div>
   </div>
 </div>
 <!-- Modal update -->
-<div class="modal fade" id="exampleModal" #basicModal2 tabindex="-1" role="dialog" aria-labelledby="exampleModal"
+<div class="modal fade" id="exampleModal" #basicModal2 tabindex="-1" role="dialog"
+     aria-labelledby="exampleModal"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -134,21 +172,28 @@
       </div>
       <form [formGroup]="FormGroupUpdate" (ngSubmit)="update()">
 
-      <div class="modal-body">
-        <input type="number"
-               class="form-control"
-               formControlName="id"
-                [hidden]=true
-        >
+        <div class="modal-body">
+          <input type="number"
+                 class="form-control"
+                 formControlName="id"
+                 [hidden]=true
+          >
 
           <div class="col-md-12">
             <div class="form-group">
-              <label  class="control-label">Annee du Production</label>
-              <input type="date"
-                      class="form-control"
-                     formControlName="anneeProduction"
-                     [ngClass]="{ 'is-invalid': submittedUpdate && f.anneeProduction.errors }"
-              >
+              <label class="control-label">Annee du Production</label>
+              <!--              <input type="date"-->
+              <!--                      class="form-control"-->
+              <!--                     formControlName="anneeProduction"-->
+              <!--                     -->
+              <!--              >-->
+
+              <select class="form-control" name="pets" formControlName="anneeProduction"
+                      [ngClass]="{ 'is-invalid': submittedUpdate && f.anneeProduction.errors }">
+                <option value="null">--Please choose an option--</option>
+                <option *ngFor="let annee of ListAnne" value="{{annee}}">{{annee}}</option>
+
+              </select>
               <div *ngIf="submittedUpdate && f.anneeProduction.errors" class="invalid-feedback">
                 <div> Annee du Production est obligatoire</div>
               </div>
@@ -158,13 +203,15 @@
           <!--/span-->
           <div class="col-md-12">
             <div class="form-group has-danger">
-              <label  class="control-label">La Valeur du Production </label>
+              <label class="control-label">La Valeur du Production </label>
               <input type="number"
                      formControlName="productionValue"
 
                      class="form-control"
                      [ngClass]="{ 'is-invalid': submittedUpdate && f.productionValue.errors }"
               >
+
+
               <div *ngIf="submittedUpdate && f.productionValue.errors" class="invalid-feedback">
                 <div>La Production est obligatoire</div>
               </div>
@@ -173,13 +220,13 @@
           </div>
           <!--/row-->
 
-      </div>
+        </div>
 
 
-      <div class="modal-footer">
-<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>-->
-        <button type="submit" class="btn btn-primary" >Ajouter</button>
-      </div>
+        <div class="modal-footer">
+          <!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>-->
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </div>
       </form>
     </div>
   </div>
