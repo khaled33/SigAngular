@@ -5,14 +5,15 @@ import { ProductionAnnuelRoutingModule } from './production-annuel-routing.modul
 import { ProductionAnnuelComponent } from './production-annuel.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 
 @NgModule({
   declarations: [ProductionAnnuelComponent],
   imports: [
-    CommonModule,NgxChartsModule,
+    CommonModule, NgxChartsModule,
     ProductionAnnuelRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, NgxSpinnerModule
   ]
 })
 export class ProductionAnnuelModule { }

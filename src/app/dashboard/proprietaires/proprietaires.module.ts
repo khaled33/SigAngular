@@ -9,17 +9,19 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {ProprietairesService} from '../../_service/proprietaires.service';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {UpdateComponent} from './update/update.component';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 @NgModule({
   declarations: [ListComponent,AddComponent, ProprietairesComponent, UpdateComponent],
   imports: [
     CommonModule,
     ProprietairesRoutingModule,
-    ReactiveFormsModule,NgbPaginationModule
+    ReactiveFormsModule,NgbPaginationModule,NgxSpinnerModule,
 
   ],
-  providers:[ProprietairesService]
+  providers:[ProprietairesService,ToastrService]
 
 })
 export class ProprietairesModule { }

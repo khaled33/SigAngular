@@ -15,6 +15,8 @@ import { LeftSidebarComponent } from './dashboard/left-sidebar/left-sidebar.comp
 import {ProprietairesService} from './_service/proprietaires.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {ListboxModule} from 'primeng/listbox';
+import {NgxSpinnerModule, NgxSpinnerService} from 'ngx-spinner';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,17 @@ import {ListboxModule} from 'primeng/listbox';
     BrowserModule, DialogModule,
     AppRoutingModule, FormsModule,ReactiveFormsModule,
     BrowserAnimationsModule,  HttpClientModule,
-    LoginModule, DashboardModule
-  ],
-  providers: [],
+    LoginModule, DashboardModule,
+    ToastrModule.forRoot({
+      closeButton: true,
+      timeOut: 5000,
+      enableHtml: true,
+      // progressAnimation: 'decreasing',
+      positionClass: 'toast-bottom-right',
+
+    }),
+   ],
+  providers: [NgxSpinnerService,ToastrService],
   exports: [
 
   ],

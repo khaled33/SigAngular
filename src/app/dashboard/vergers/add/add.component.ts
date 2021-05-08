@@ -4,6 +4,7 @@ import {ProprietairesService} from '../../../_service/proprietaires.service';
 import {Router} from '@angular/router';
 import {VergersService} from '../../../_service/vergers.service';
 import {Vergers} from '../../../_model/vergers';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-add',
@@ -16,9 +17,11 @@ export class AddComponent implements OnInit,AfterViewInit {
    vergers:Vergers=new Vergers();
   @ViewChild('pRef', {static: false}) pRef: ElementRef;
 
-  constructor(private fb: FormBuilder,private VergersService:VergersService,private Route:Router) { }
+  constructor(private fb: FormBuilder,private VergersService:VergersService,
+           private Route:Router) { }
 
   ngOnInit() {
+
     this.FormGroup = this.fb.group({
       superficies: ['', Validators.required],
       densites: ['',Validators.required ],
@@ -47,6 +50,8 @@ export class AddComponent implements OnInit,AfterViewInit {
     this.vergers.geomString="POINT("+this.FormGroup.value.x+" "+ +this.FormGroup.value.y+")";
     this.VergersService.addVergers(this.vergers).subscribe(value => {
       console.log(this.vergers);
+      this.FormGroup.reset();
+      this.submitted = false;
     })
 
 

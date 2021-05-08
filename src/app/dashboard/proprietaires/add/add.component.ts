@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {Proprietaires} from '../../../_model/proprietaires';
 import {ProprietairesService} from '../../../_service/proprietaires.service';
 import {Route, Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 // @ts-ignore
 @Component({
@@ -15,9 +16,11 @@ export class AddComponent implements OnInit {
   FormGroup :FormGroup;
   submitted = false;
    p:Proprietaires;
-  constructor(private fb: FormBuilder,private ProprietairesService:ProprietairesService,private Route:Router) { }
+  constructor(private fb: FormBuilder,private ProprietairesService:ProprietairesService,private Route:Router,
+             ) { }
 
   ngOnInit() {
+
     this.FormGroup = this.fb.group({
       nom: ['', Validators.required],
       prenom: ['',Validators.required ],
@@ -44,8 +47,11 @@ export class AddComponent implements OnInit {
     this.p=this.FormGroup.value;
     console.log(this.p);
     this.ProprietairesService.addproprietaires(this.p).subscribe(value => {
-      console.log(value);
-      this.Route.navigate(["dashboard/proprietaires/list"])
+      this.submitted = false;
+      // this.Route.navigate(["dashboard/proprietaires/list"])
+      this.FormGroup.reset();
+
+
     })
 
 

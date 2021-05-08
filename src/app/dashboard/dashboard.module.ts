@@ -14,15 +14,23 @@ import {VergersModule} from './vergers/vergers.module';
 import {DashboardMapModule} from './_dashboard-map/dashboard-map/dashboard-map.module';
 import {DashboardAnalyticsModule} from './_dashboard-map/dashboard-analytics/dashboard-analytics.module';
 import {ProductionAnnuelModule} from './production-annuel/production-annuel.module';
+import {NgxSpinnerService} from 'ngx-spinner';
 
-// @ts-ignore
+
 @NgModule({
   declarations: [DashboardComponent, HeaderComponent, LeftSidebarComponent],
   imports: [
     CommonModule,
-    DashboardRoutingModule,ProductionAnnuelModule, ProprietairesModule, VergersModule,DashboardMapModule,ListboxModule,DashboardAnalyticsModule
+    DashboardRoutingModule,
+    ProductionAnnuelModule,
+    ProprietairesModule,
+    VergersModule,
+    DashboardMapModule,
+    ListboxModule,
+    DashboardAnalyticsModule
 
   ],
+  providers:[]
 })
 export class DashboardModule {
 }
