@@ -17,6 +17,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import {ListboxModule} from 'primeng/listbox';
 import {NgxSpinnerModule, NgxSpinnerService} from 'ngx-spinner';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
+import {RegisterModule} from './register/register.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import {ToastrModule, ToastrService} from 'ngx-toastr';
     BrowserModule, DialogModule,
     AppRoutingModule, FormsModule,ReactiveFormsModule,
     BrowserAnimationsModule,  HttpClientModule,
-    LoginModule, DashboardModule,
+    LoginModule, DashboardModule,RegisterModule,
     ToastrModule.forRoot({
       closeButton: true,
       timeOut: 5000,
