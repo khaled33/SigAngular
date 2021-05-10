@@ -1,0 +1,116 @@
+<div class="content" style=" padding: 8rem 0;
+">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 order-md-2">
+        <img src="/assets/images/undraw_file_sync_ot38.svg" style="  padding: 8rem 0; " alt="Image" class="img-fluid">
+      </div>
+      <div class="col-md-6 contents">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="mb-4">
+              <h3>S'inscrire à <strong>CBA</strong></h3>
+              <p class="mb-4">Inscrivez-vous et découvrez la plateforme de la gestion des vergers & la système
+                d'information géographique.</p>
+            </div>
+            <form [formGroup]="FormGroup" (ngSubmit)="onSubmit()">
+
+              <div class="form-group first field--not-empty">
+                <label>Nom</label>
+                <input type="text"
+                       formControlName="firstname"
+                       class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }"
+                >
+                <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                  <div >Le nom  est obligatoire</div>
+                </div>
+              </div>
+
+              <div class="form-group first field--not-empty">
+                <label>Prénom</label>
+                <input type="text"
+                       formControlName="lastname"
+                       class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"
+                >
+                <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                  <div >Le prénom est obligatoire</div>
+                </div>
+
+              </div>
+
+              <div class="form-group first field--not-empty">
+                <label>Email</label>
+                <input type="email"
+                       formControlName="email"
+                       class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                >
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email est obligatoire</div>
+                  <div *ngIf="f.email.errors?.email">Email doit être une adresse e-mail valide</div>
+                </div>
+              </div>
+
+              <div class="form-group first field--not-empty">
+                <label>Telephone</label>
+                <input type="number"
+                        formControlName="phone"
+                       class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
+                >
+                <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                  <div *ngIf="f.phone.errors.required">Telephone est obligatoire</div>
+                  <div *ngIf="f.phone.errors.min"> Telephone doit être au moins de 6 caractères</div>
+                </div>
+              </div>
+
+
+              <div class="form-group first field--not-empty">
+                <label>Mot de passe</label>
+                <input type="password"
+                       formControlName="password"
+                       class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+
+                >
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Mot de passe est obligatoire</div>
+                  <div *ngIf="f.password.errors.minlength">Mot de passe doit être au moins de 6 caractères</div>
+                </div>
+              </div>
+
+              <div class="form-group first field--not-empty">
+                <label>Confirmation Mot de passe</label>
+                <input type="password"
+                       formControlName="ConfirmPassword"
+                       class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.ConfirmPassword.errors }"
+
+                >
+                <div *ngIf="submitted && f.ConfirmPassword.errors" class="invalid-feedback">
+                  <div *ngIf="f.ConfirmPassword.errors.required">Confirmation Mot de passe est obligatoire</div>
+                  <div *ngIf="f.ConfirmPassword.errors.mustMatch">les mots de passe doivent correspondre</div>
+                </div>
+              </div>
+
+              <div class="d-flex   align-items-center">
+                <label class="control control--checkbox mb-0" style="margin-left: -23px;"> <a routerLink="/login">Connexion</a>   </label>
+
+                <span class="ml-auto"><a href="#" class="forgot-pass">Mot de passe oublié</a></span>
+              </div>
+              <br>
+              <input type="submit" value="S'inscrire" class="btn text-white btn-block btn-primary">
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
