@@ -5,6 +5,8 @@ export class User {
   email: String;
   phone: String;
   password: String;
+  token = '';
+  roles: any = [];
 
 }
 

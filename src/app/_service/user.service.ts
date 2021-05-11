@@ -30,7 +30,7 @@ export class UserService {
           this.spinner.hide();
         },
         (error: any) => {
-          this.toastr.error('erreur d\'enregistrement', 'User');
+          this.toastr.error('erreur d\'enregistrement '+error.error.message, 'User');
 
           this.spinner.hide();
         }

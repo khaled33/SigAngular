@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
     this.User = this.FormGroup.value;
     this.UserService.RegisterUser(this.User).subscribe(value => {
       this.submitted = false;
-   // this.route.navigate(['/login'])
+     this.route.navigate(['/login'])
   } );
 
   }

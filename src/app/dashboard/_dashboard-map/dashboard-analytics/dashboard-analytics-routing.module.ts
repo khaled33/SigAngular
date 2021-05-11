@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
  import {DashboardAnalyticsComponent} from './dashboard-analytics.component';
+import {AuthGuard} from '../../../_helpers/auth.guard';
 
 
 const routes: Routes = [
-  {path:'',component:DashboardAnalyticsComponent,children:[
+  {path:'',component:DashboardAnalyticsComponent,canActivate: [AuthGuard],children:[
 
     ]}
 ];

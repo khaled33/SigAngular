@@ -18,6 +18,8 @@ import {ListboxModule} from 'primeng/listbox';
 import {NgxSpinnerModule, NgxSpinnerService} from 'ngx-spinner';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {RegisterModule} from './register/register.module';
+import {ErrorInterceptor} from './_helpers/error.interceptor';
+import {JwtInterceptor} from './_helpers/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,10 @@ import {RegisterModule} from './register/register.module';
 
     }),
    ],
-  providers: [NgxSpinnerService,ToastrService],
+  providers: [NgxSpinnerService,ToastrService,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+  ],
   exports: [
 
   ],
