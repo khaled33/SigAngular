@@ -19,6 +19,8 @@
               <th>Age Moyen</th>
               <th>Densites</th>
               <th>Rendements</th>
+              <th>Annee du production</th>
+              <th>Ajoute Par</th>
               <th style="text-align: center">Localisation</th>
 
               <th style="text-align: center">Action</th>
@@ -34,6 +36,9 @@
               <td>{{Verger.ageMoyen | date}}</td>
               <td>{{Verger.densites}}</td>
               <td>{{Verger.rendements}}</td>
+              <td>{{Verger.annee | date:'yyyy'}}</td>
+              <td>{{Verger.ajoutePar}}</td>
+
               <td style="text-align: center">
                 <button class="btn btn btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter"
                         (click)="Localisation(Verger.id)"><i class="fa fa-map-marker" aria-hidden="true"></i>

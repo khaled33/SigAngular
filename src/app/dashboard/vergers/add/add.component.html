@@ -1,4 +1,5 @@
-<ngx-spinner bdColor = "rgba(252,252,252,0.8)" size = "medium" color = "#40a028" type = "line-scale" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+<ngx-spinner bdColor="rgba(252,252,252,0.8)" size="medium" color="#40a028" type="line-scale" [fullScreen]="true"><p
+  style="color: white"> Loading... </p></ngx-spinner>
 
 <div class="row">
   <div class="col-lg-12">
@@ -44,86 +45,144 @@
               <!--/row-->
 
 
-
-                <div class="col-md-4 ">
-                  <div class="form-group">
-                    <label>L'age Moyen du Verger</label>
-                    <input type="number" class="form-control" formControlName="ageMoyen"
-                           [ngClass]="{ 'is-invalid': submitted && f.ageMoyen.errors }"
-                    >
-                    <div *ngIf="submitted && f.ageMoyen.errors" class="invalid-feedback">
-                      <div>L'age Moyen du Verger est obligatoire</div>
-                    </div>
+              <div class="col-md-4 ">
+                <div class="form-group">
+                  <label>L'age Moyen du Verger</label>
+                  <input type="number" class="form-control" formControlName="ageMoyen"
+                         [ngClass]="{ 'is-invalid': submitted && f.ageMoyen.errors }"
+                  >
+                  <div *ngIf="submitted && f.ageMoyen.errors" class="invalid-feedback">
+                    <div>L'age Moyen du Verger est obligatoire</div>
                   </div>
                 </div>
-                <!--/span-->
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label>Rendements du Verger</label>
-                    <input type="number" formControlName="rendements"
-                           class="form-control"
-                           [ngClass]="{ 'is-invalid': submitted && f.rendements.errors }"
-                    >
-                    <div *ngIf="submitted && f.rendements.errors" class="invalid-feedback">
-                      <div>Rendements du Verger est obligatoire</div>
-                    </div>
-                  </div>
-                </div>        <!--/span-->
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label>Annee du production Verger</label>
-                    <input type="date" formControlName="annee"
-                           #pRef  class="form-control date-own"
-                           [ngClass]="{ 'is-invalid': submitted && f.annee.errors }"
-                    >
-                    <div *ngIf="submitted && f.annee.errors" class="invalid-feedback">
-                      <div>Annee du production Verger est obligatoire</div>
-                    </div>
-                  </div>
-                </div>
-
-                <label>Localisation du Verger</label><BR>
-                <div  class="col-md-4">
-                  <div class="form-row ">
-                    <div class="col text-center">
-
-
-                      <input type="number" formControlName="x"
-                             class="form-control"
-                             placeholder="X"
-                             [ngClass]="{ 'is-invalid': submitted && f.x.errors }"
-                      >
-                      <div *ngIf="submitted && f.x.errors" class="invalid-feedback">
-                        <div>x du Verger est obligatoire</div>
-                      </div>
-                    </div>
-                    <div class="col text-center" >
-
-                      <input type="number" formControlName="y"
-                             class="form-control"
-                             placeholder="Y"
-
-                             [ngClass]="{ 'is-invalid': submitted && f.y.errors }"
-                      >
-                      <div *ngIf="submitted && f.y.errors" class="invalid-feedback">
-                        <div>y du Verger est obligatoire</div>
-                      </div>
-                    </div>
-
-
-                  </div>
-                </div>
-                <!--/span-->
               </div>
+              <!--/span-->
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Rendements du Verger</label>
+                  <input type="number" formControlName="rendements"
+                         class="form-control"
+                         [ngClass]="{ 'is-invalid': submitted && f.rendements.errors }"
+                  >
+                  <div *ngIf="submitted && f.rendements.errors" class="invalid-feedback">
+                    <div>Rendements du Verger est obligatoire</div>
+                  </div>
+                </div>
+              </div>        <!--/span-->
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Annee du production Verger</label>
+                  <input type="date" formControlName="annee"
+                         #pRef class="form-control date-own"
+                         [ngClass]="{ 'is-invalid': submitted && f.annee.errors }"
+                  >
+                  <div *ngIf="submitted && f.annee.errors" class="invalid-feedback">
+                    <div>Annee du production Verger est obligatoire</div>
+                  </div>
+                </div>
+              </div>
+
+              <label>Localisation du Verger</label><BR>
+              <div class="col-md-4">
+                <div class="form-row ">
+                  <div class="col text-center">
+
+
+                    <input type="number" formControlName="x"
+                           class="form-control"
+                           placeholder="X"
+                           [ngClass]="{ 'is-invalid': submitted && f.x.errors }"
+                    >
+                    <div *ngIf="submitted && f.x.errors" class="invalid-feedback">
+                      <div>x du Verger est obligatoire</div>
+                    </div>
+                  </div>
+                  <div class="col text-center">
+
+                    <input type="number" formControlName="y"
+                           class="form-control"
+                           placeholder="Y"
+
+                           [ngClass]="{ 'is-invalid': submitted && f.y.errors }"
+                    >
+                    <div *ngIf="submitted && f.y.errors" class="invalid-feedback">
+                      <div>y du Verger est obligatoire</div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+              <!--/span-->
+              <div class="col-md-4">
+                <button type="button" class="btn  btn-outline-success" data-toggle="modal"
+                        data-target="#exampleModalCenter">
+                  Associer cette verger à un propriétaire
+                </button>
+              </div>
+            </div>
 
 
             <br>
             <div class="form-actions">
-              <button type="submit" class="btn btn-success btn-block m-b-10"><i class="fa fa-check"></i> Sauvegarder</button>
+              <button type="submit" class="btn btn-success btn-block m-b-10"><i class="fa fa-check"></i> Sauvegarder
+              </button>
             </div>
           </div>
 
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <input type="text"
+               class="form-control"
+               placeholder="Recherche propriétaires par numero du cart CIN ..."
+               [(ngModel)]="cartCinInput"
+               (keydown.enter)="onKeydown()"
+        >
+<!--        <button type="button" class="btn btn-primary" (click)="recherchProprietairesParCin()">Recherche</button>-->
+
+        <button class="btn btn btn-outline-success" (click)="recherchProprietairesParCin()" id="button-recherche">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+
+      </div>
+      <div class="modal-body">
+        <img id="image-recherche-modale" [hidden]="hiddenImageRecherch" src="assets/images/Web_search.png" alt="Image">
+
+        <h3 style="color: red;text-align: center">{{MessageEmpty}}</h3>
+
+        <ul class="list-group" [hidden]="hiddenDetaileproprietaires">
+          <li class="list-group-item">Non & Prenom : <span
+            class="testProprietaires">{{proprietaires?.nom + " " + proprietaires?.prenom}}</span></li>
+          <li class="list-group-item">Genre: <span class="testProprietaires">{{proprietaires?.genre}}</span></li>
+          <li class="list-group-item">Date De Naissance : <span
+            class="testProprietaires">{{proprietaires?.dateDeNaissance|date:"dd-MM-yyyy"}}</span></li>
+          <li class="list-group-item">Regions : <span class="testProprietaires">{{proprietaires?.regions}}</span></li>
+          <li class="list-group-item">Ville : <span class="testProprietaires">{{proprietaires?.ville}}</span></li>
+          <li class="list-group-item">Code Postal : <span
+            class="testProprietaires">{{proprietaires?.codePostal}}	</span></li>
+          <li class="list-group-item">Ajoute Par : <span class="testProprietaires"> {{proprietaires?.ajoutePar}}</span>
+          </li>
+        </ul>
+
+        <br>
+        <button (click)="AssocierProprietaire()" [hidden]="hiddenDetaileproprietaires" type="button"
+                data-dismiss="modal" class="btn btn-success btn-block m-b-10"> Associer le
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

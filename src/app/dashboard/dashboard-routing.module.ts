@@ -35,8 +35,13 @@ const routes: Routes = [
         loadChildren: () => import('./production-annuel/production-annuel.module').then(m => m.ProductionAnnuelModule),
         canActivate: [AuthGuard]
       },
+      {
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
+        canActivate: [AuthGuard]
+      },
       // redirect to `
-      {path: '', redirectTo: '/dashboard', pathMatch: 'full',canActivate: [AuthGuard]}, // redirect to `
+      {path: '', redirectTo: '/dashboard/Analytics', pathMatch: 'full',canActivate: [AuthGuard]}, // redirect to `
     ]
 
   },

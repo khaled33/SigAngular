@@ -8,5 +8,6 @@ export class Proprietaires {
   ville: string;
   codePostal: number;
   cin: number;
+  ajoutePar:String="";
 
 }

@@ -4,14 +4,10 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
 
-      <div class="modal-body">
+      <div class="modal-body" style="
+    padding: 2%;
+">
 
-
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card card-outline-primary">
-
-              <div class="card-body">
                 <form [formGroup]="FormGroup" (ngSubmit)="onClickSubmit()">
                   <div class="form-body">
                     <h3 class="card-title m-t-15">Informations du verger</h3>
@@ -113,8 +109,8 @@
 
 
                     <br>
-                    <div class="form-actions">
-                      <button type="submit" class="btn btn-success btn-block m-b-10"><i class="fa fa-check"></i> Mettre à jour</button>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Mettre à jour</button>
                     </div>
                   </div>
 
@@ -125,7 +121,4 @@
         </div>
 
 
-      </div>
-    </div>
-  </div>
-</div>
+

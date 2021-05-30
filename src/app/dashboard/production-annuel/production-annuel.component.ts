@@ -20,6 +20,8 @@ export class ProductionAnnuelComponent implements OnInit, AfterViewInit {
   submitted = false;
   submittedUpdate = false;
   ListAnne: Array<number> = [];
+  ajoutPar:String="";
+
   @ViewChild('basicModal', {static: false}) openModal: ElementRef;
   @ViewChild('basicModal2', {static: false}) openModalUpdate: ElementRef;
   view: any[] = [500, 500];
@@ -86,7 +88,7 @@ export class ProductionAnnuelComponent implements OnInit, AfterViewInit {
   }
 
   updateProduction(Production: AnneeProduction) {
-
+this.ajoutPar=Production.ajoutePar;
     this.FormGroupUpdate.get('id').setValue(Production.id);
     this.FormGroupUpdate.get('anneeProduction').setValue(Production.anneeProduction);
     this.FormGroupUpdate.get('productionValue').setValue(Production.productionValue);
@@ -159,6 +161,9 @@ export class ProductionAnnuelComponent implements OnInit, AfterViewInit {
     //   return;
     // }
     this.ModaleProductionUpdate = this.FormGroupUpdate.value;
+    this.ModaleProductionUpdate.ajoutePar=this.ajoutPar;
+
+
     this.openModalUpdate.nativeElement.click();
 
     //
@@ -167,7 +172,7 @@ export class ProductionAnnuelComponent implements OnInit, AfterViewInit {
       this.getAllProductionsAnnuel();
       this.ModaleProductionUpdate = null;
       this.submittedUpdate = false;
-
+      this.ajoutPar="";
     });
   }
 

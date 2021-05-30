@@ -81,7 +81,7 @@ export class ListComponent implements OnInit {
 
   update(Proprietaire: Proprietaires) {
     this.proprietaireUpdate = Proprietaire;
-  }
+   }
 
 
 }

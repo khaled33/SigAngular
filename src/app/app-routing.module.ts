@@ -19,7 +19,7 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule),
   },
 
-  {path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuard]}, // redirect to `first-component`
+  {path: '', redirectTo: '/dashboard/Analytics', pathMatch: 'full', canActivate: [AuthGuard]}, // redirect to `first-component`
   {path: '**', component: PageNotFoundComponent}
 ];
 

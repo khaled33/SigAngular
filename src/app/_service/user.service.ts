@@ -38,18 +38,18 @@ export class UserService {
     );
   }
 
-  // getPageVergers(pageSize: number, pageNumber: number) {
-  //   this.spinner.show();
-  //   return this.httpClient.get(`${environment.urlApi}` + '/VergersPage?pageSize=' + pageSize + '&pageNumber=' + pageNumber).pipe(
-  //     tap(response => this.spinner.hide(),
-  //       (error: any) => {
-  //         this.toastr.error('erreur ', 'Vergers');
-  //
-  //         this.spinner.hide();
-  //       }
-  //     )
-  //   );
-  // }
+  getCorrentUser() {
+    this.spinner.show();
+    return this.httpClient.get<User>(`${environment.urlApi}` + '/User').pipe(
+      tap(response => this.spinner.hide(),
+        (error: any) => {
+          this.toastr.error('erreur ', 'User');
+
+          this.spinner.hide();
+        }
+      )
+    );
+  }
   //
   // DeleteVergers(id: number) {
   //   this.spinner.show();
@@ -60,21 +60,21 @@ export class UserService {
   //   );
   // }
   //
-  // UpdateVergers(vergers: Vergers, id: number) {
-  //   this.spinner.show();
-  //   return this.httpClient.put(`${environment.urlApi}/Vergers/` + id, JSON.stringify(vergers), this.httpOptions).pipe(
-  //     tap(response => {
-  //
-  //         this.toastr.success('le mettre à jour du verger a été effectué avec succès', 'Vergers');
-  //         this.spinner.hide();
-  //       },
-  //       (error: any) => {
-  //         this.toastr.error('erreur du mettre à jour du verger', 'Vergers');
-  //
-  //         this.spinner.hide();
-  //       }
-  //     )
-  //   );
-  //
-  // }
+  UpdateUser(user: User) {
+    this.spinner.show();
+    return this.httpClient.put(`${environment.urlApi}/UpdateUser`, JSON.stringify(user), this.httpOptions).pipe(
+      tap(response => {
+
+          this.toastr.success('le mettre à jour  a été effectué avec succès', 'User');
+          this.spinner.hide();
+        },
+        (error: any) => {
+          this.toastr.error('erreur du mettre à jour ', 'User');
+
+          this.spinner.hide();
+        }
+      )
+    );
+
+  }
 }

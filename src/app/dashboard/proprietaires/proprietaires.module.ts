@@ -18,7 +18,7 @@ import {ToastrModule, ToastrService} from 'ngx-toastr';
   imports: [
     CommonModule,
     ProprietairesRoutingModule,
-    ReactiveFormsModule,NgbPaginationModule,NgxSpinnerModule,
+    ReactiveFormsModule,NgbPaginationModule,NgxSpinnerModule,ToastrModule
 
   ],
   providers:[ProprietairesService,ToastrService]

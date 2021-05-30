@@ -1,3 +1,16 @@
 .ui-datepicker-calendar {
   display: none;
 }
+#image-recherche-modale{
+  width: 62%;
+  display: block;
+  margin: auto;
+}
+.testProprietaires{
+  color: #28a745;
+}
+#button-recherche{
+  padding: 8px;
+  padding-right: 15px;
+  padding-left: 15px;
+}

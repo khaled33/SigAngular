@@ -24,11 +24,11 @@ export class ProprietairesService {
     return this.httpClient.post(`${environment.urlApi}/Proprietaires`, JSON.stringify(Proprietaires), this.httpOptions).pipe(
       tap(response => {
 
-          this.toastr.success('l\'enregistrement a été effectué avec succès', 'Proprietaires');
+          this.toastr.success('l\'enregistrement a été effectué avec succès', 'Proprietaires', {positionClass: 'toast-bottom-right'});
           this.spinner.hide();
         },
         (error: any) => {
-          this.toastr.error('erreur d\'enregistrement', 'Proprietaires');
+          this.toastr.error('erreur d\'enregistrement', 'Proprietaires', {positionClass: 'toast-bottom-right'});
 
           this.spinner.hide();
         }
@@ -42,7 +42,21 @@ export class ProprietairesService {
     return this.httpClient.get(`${environment.urlApi}` + '/ProprietairesPage?pageSize=' + pageSize + '&pageNumber=' + pageNumber).pipe(
       tap(response => this.spinner.hide(),
         (error: any) => {
-          this.toastr.error('erreur ', 'Proprietaires');
+          this.toastr.error('erreur ', 'Proprietaires', {positionClass: 'toast-bottom-right'});
+
+          this.spinner.hide();
+        }
+      )
+    );
+  }
+
+  getProprietairesByNumCartCin(cin: String) {
+    this.spinner.show();
+
+    return this.httpClient.get<Proprietaires>(`${environment.urlApi}` + '/Proprietaires/cin/' + cin).pipe(
+      tap(response => this.spinner.hide(),
+        (error: any) => {
+          this.toastr.error('erreur ', 'Proprietaires', {positionClass: 'toast-bottom-right'});
 
           this.spinner.hide();
         }
@@ -67,11 +81,11 @@ export class ProprietairesService {
     return this.httpClient.put(`${environment.urlApi}/Proprietaires/` + id, JSON.stringify(p), this.httpOptions).pipe(
       tap(response => {
 
-          this.toastr.success('le mettre à jour du Proprietaire a été effectué avec succès', 'Proprietaires');
+          this.toastr.success('le mettre à jour du Proprietaire a été effectué avec succès', 'Proprietaires', {positionClass: 'toast-bottom-right'});
           this.spinner.hide();
         },
         (error: any) => {
-          this.toastr.error('erreur du mettre à jour  ', 'Proprietaires');
+          this.toastr.error('erreur du mettre à jour  ', 'Proprietaires', {positionClass: 'toast-bottom-right'});
 
           this.spinner.hide();
         }

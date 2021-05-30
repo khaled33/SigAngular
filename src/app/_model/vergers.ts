@@ -1,3 +1,5 @@
+import {Proprietaires} from './proprietaires';
+
 export class Vergers {
   id: number;
   superficies: number;
@@ -6,4 +8,6 @@ export class Vergers {
   rendements: number;
   geomString:String="";
   annee:String="";
+  ajoutePar:String="";
+  Propietaire?:Proprietaires;
 }

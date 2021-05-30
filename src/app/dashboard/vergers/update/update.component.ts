@@ -18,6 +18,7 @@ export class UpdateComponent implements OnInit, OnChanges {
    submitted = false;
    vergers: Vergers = new Vergers();
    id: number = 0;
+  ajoutPar:String="";
 
   constructor(private fb: FormBuilder, private ServiceGeoserverService: ServiceGeoserverService, private VergersService: VergersService, private Route: Router, private ListComponent: ListComponent) {
   }
@@ -35,6 +36,7 @@ export class UpdateComponent implements OnInit, OnChanges {
     this._itemup = val;
     try {
       this.id = val.id;
+      this.ajoutPar = val.ajoutePar;
     } catch (e) {
     }
 
@@ -66,6 +68,8 @@ export class UpdateComponent implements OnInit, OnChanges {
     }
 
     this.vergers = this.FormGroup.value;
+    this.vergers.ajoutePar= this.ajoutPar;
+
     this.vergers.geomString = 'POINT(' + this.FormGroup.value.x + ' ' + +this.FormGroup.value.y + ')';
     this.VergersService.UpdateVergers(this.vergers, this.id).subscribe(value => {
       this.openModal.nativeElement.click();

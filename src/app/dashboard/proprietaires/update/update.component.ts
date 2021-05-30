@@ -26,7 +26,7 @@ export class UpdateComponent implements OnInit, OnChanges {
   FormGroup: FormGroup;
   submitted = false;
   p: Proprietaires;
-
+  ajoutPar:String="";
   @ViewChild('basicModal', {static: false}) openModal: ElementRef;
 
 
@@ -44,6 +44,7 @@ export class UpdateComponent implements OnInit, OnChanges {
     this._itemup = val;
     try {
       this.id = val.id;
+      this.ajoutPar = val.ajoutePar;
     } catch (e) {
     }
 
@@ -98,6 +99,7 @@ export class UpdateComponent implements OnInit, OnChanges {
     }
 
     this.p = this.FormGroup.value;
+    this.p.ajoutePar= this.ajoutPar;
     console.log(this.p);
     this.ProprietairesService.Updateproprietaires(this.p, this.id).subscribe(value => {
 

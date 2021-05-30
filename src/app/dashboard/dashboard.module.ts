@@ -15,6 +15,7 @@ import {DashboardMapModule} from './_dashboard-map/dashboard-map/dashboard-map.m
 import {DashboardAnalyticsModule} from './_dashboard-map/dashboard-analytics/dashboard-analytics.module';
 import {ProductionAnnuelModule} from './production-annuel/production-annuel.module';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {ProfileModule} from './profile/profile.module';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
     VergersModule,
     DashboardMapModule,
     ListboxModule,
-    DashboardAnalyticsModule
+    DashboardAnalyticsModule,ProfileModule
 
   ],
   providers:[]

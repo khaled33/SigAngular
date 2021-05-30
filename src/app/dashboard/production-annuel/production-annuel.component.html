@@ -19,6 +19,8 @@
               <th>#</th>
               <th>La Année du Productions</th>
               <th>Toutal du Production des Vergers</th>
+              <th>Ajoute Par</th>
+
               <th style="text-align: center">Action</th>
             </tr>
             </thead>
@@ -27,6 +29,7 @@
               <th scope="row">{{Production.id}}</th>
               <td>{{Production.anneeProduction  }} </td>
               <td>{{Production.productionValue }}</td>
+              <td>{{Production.ajoutePar }}</td>
               <td style="text-align: center">
                 <span>
                   <button style=" margin-right: 17px;" class="btn btn btn-outline-info" data-toggle="modal"
@@ -153,7 +156,7 @@
 
         <div class="modal-footer">
           <!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>-->
-          <button type="submit" class="btn btn-primary">Sauvegarder</button>
+          <button type="submit" class="btn btn-success ">Sauvegarder</button>
         </div>
       </form>
     </div>
@@ -227,7 +230,7 @@
 
         <div class="modal-footer">
           <!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>-->
-          <button type="submit" class="btn btn-primary">Mettre à jour</button>
+          <button type="submit" class="btn btn-success">Mettre à jour</button>
         </div>
       </form>
     </div>
